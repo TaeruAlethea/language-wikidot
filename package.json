@@ -1,0 +1,14 @@
+{
+  "name": "language-wikidot",
+  "version": "0.0.0",
+  "description": null,
+  "keywords": [
+    "language",
+    "grammar"
+  ],
+  "repository": "https://github.com/atom/language-wikidot",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}
