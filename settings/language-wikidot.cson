@@ -3,4 +3,6 @@
 
 '.source.wikidot':
   'editor':
-    'commentStart': '@@ '
+    'softwrap': true
+    'commentStart': '\\[!--'
+    'commendEnd': '--]'
