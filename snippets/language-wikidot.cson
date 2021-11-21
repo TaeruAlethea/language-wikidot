@@ -4,25 +4,25 @@
 '.source.wikidot':
 	#Inline Formatting snippets
 	'italics text':
-		prefix: 'i'
+		prefix: 'italics'
 		body: '//$1//$0'
 	'bold text':
-		prefix: 'b'
+		prefix: 'bold'
 		body: '**$1**$0'
 	'underline text':
-		prefix: 'u'
+		prefix: 'underline'
 		body: '__$1__$0'
 	'strikethrough text':
-		prefix: 's'
+		prefix: 'strikethrough'
 		body: '--$1--$0'
 	'monospaced text':
-		prefix: 'm'
+		prefix: 'monospaced'
 		body: '{{$1}}$0'
 	'superscript text':
-		prefix: 'sup'
+		prefix: 'superscript'
 		body: '^^$1^^$0'
 	'subscript text':
-		prefix: 'sub'
+		prefix: 'subscript'
 		body: ',,$1,,$0'
 	'heading level 1':
 		prefix: 'h1'
@@ -43,27 +43,27 @@
 		prefix: 'h6'
 		body: '++++++ $0'
 	'hidden heading level 1':
-		prefix: 'h1*'
+		prefix: 'h*1'
 		body: '+* $0'
 	'hidden heading level 2':
-		prefix: 'h2*'
+		prefix: 'h*2'
 		body: '++* $0'
 	'hidden heading level 3':
-		prefix: 'h3*'
+		prefix: 'h*3'
 		body: '+++* $0'
 	'hidden heading level 4':
-		prefix: 'h4*'
+		prefix: 'h*4'
 		body: '++++* $0'
 	'hidden heading level 5':
-		prefix: 'h5*'
+		prefix: 'h*5'
 		body: '+++++* $0'
 	'hidden heading level 6':
-		prefix: 'h6*'
+		prefix: 'h*6'
 		body: '++++++* $0'
 
 	#Block snippets
 	'invisible comment block':
-		prefix: '!'
+		prefix: 'comment'
 		body: '[!-- $1 --]$0'
 	'custom element block':
 		prefix: 'span'
