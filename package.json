@@ -1,12 +1,12 @@
 {
   "name": "language-wikidot",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": null,
   "keywords": [
     "language",
     "grammar"
   ],
-  "repository": "https://github.com/atom/language-wikidot",
+  "repository": "https://github.com/TaeruAlethea/language-wikidot",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
