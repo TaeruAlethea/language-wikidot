@@ -1,76 +1,188 @@
 # If this is your first time writing a language grammar, check out:
 #   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
-
 scopeName: 'source.wikidot'
 name: 'Wikidot'
 # Include the basic types
-patterns:[{
-   include: '#inlineFormating',
-   include: '#blocks'
-}]
+patterns:[
+	{ include: '#blocks' }
+	{ include: '#inlineFormating' },
+]
 
 # Include the more specific type of patterns.
 repository:{
-   inlineFormating:
-      patterns: [
-         include: '#inlineItalicText',
-         include: '#inlineBoldText',
-         inclide: '#inlineUnderlineText',
-         include: '#inlineStrikethroughText'
-      ]
-   blocks:
-      patterns: [
-         include: '#commentsBlock'
-      ]
+	inlineFormating:
+		patterns: [
+			{ include: '#inlineItalicText' },
+			{ include: '#inlineBoldText' },
+			{ include: '#inlineUnderlineText' },
+			{ include: '#inlineStrikethroughText' },
+			{ include: '#inlineMonoSpacedText' },
+			{ include: '#inlineHeadingLevel1' },
+			{ include: '#inlineHeadingLevel2' },
+			{ include: '#inlineHeadingLevel3' },
+			{ include: '#inlineHeadingLevel4' },
+			{ include: '#inlineHeadingLevel5' },
+			{ include: '#inlineHeadingLevel6' },
+
+		]
+	blocks:
+		patterns: [
+			{ include: '#blockComments' },
+			{ include: '#blockCustomElement' },
+			{ include: '#blockColorCode' },
+			{ include: '#blockTextSize'},
+			{ include: '#blockModuleCSS' },
+		]
 
 # The specific Inline Formating Patterns
 inlineItalicText:
-   patterns:[
-      match: '(\\/\\/)(.*)(\\/\\/)'
-      captures:
-         0: name: 'meta.italic.wikidot'
-         1: name: 'punctuation.definition.italic.wikidot'
-         2: name: 'markup.italic.wikidot'
-         3: name: 'punctuation.definition.italic.wikidot'
-   ]
+	patterns:[
+		name: 'meta.italic.wikidot'
+		match: '(\\/\\/)(.*)(\\/\\/)'
+		captures:
+			1: name: 'punctuation.definition.italic.wikidot'
+			2: name: 'markup.italic.wikidot'
+			3: name: 'punctuation.definition.italic.wikidot'
+		]
 inlineBoldText:
-   patterns:[
-      match: '(\\*\\*)(.*)(\\*\\*)'
-      captures:
-         0: name: 'meta.bold.wikidot'
-         1: name: 'punctuation.definition.bold.wikidot'
-         2: name: 'markup.bold.wikidot'
-         3: name: 'punctuation.definition.bold.wikidot'
-   ]
+	patterns:[
+		name: 'meta.bold.wikidot'
+		match: '(\\*\\*)(.*)(\\*\\*)'
+		captures:
+			1: name: 'punctuation.definition.bold.wikidot'
+			2: name: 'markup.bold.wikidot'
+			3: name: 'punctuation.definition.bold.wikidot'
+		]
 inlineUnderlineText:
-   patterns:[
-      match: '(__)(.*)(__)'
-      captures:
-         0: name: 'meta.underline.wikidot'
-         1: name: 'punctuation.definition.underline.wikidot'
-         2: name: 'markup.underline.wikidot'
-         3: name: 'punctuation.definition.underline.wikidot'
-   ]
+	patterns:[
+		name: 'meta.underline.wikidot'
+		match: '(__)(.*)(__)'
+		captures:
+			1: name: 'punctuation.definition.underline.wikidot'
+			2: name: 'markup.underline.wikidot'
+			3: name: 'punctuation.definition.underline.wikidot'
+		]
 inlineStrikethroughText:
-   patterns:[
-      match: '(\A--)(.*)(--)'
-      captures:
-         0: name: 'meta.strikethrough.wikidot'
-         1: name: 'punctuation.definition.strikethrough.wikidot'
-         2: name: 'markup.strikethrough.wikidot'
-         3: name: 'punctuation.definition.strikethrough.wikidot'
-   ]
-
+	patterns:[
+		name: 'meta.strike.wikidot'
+		match: '(--)(.*)(--)'
+		captures:
+			1: name: 'punctuation.definition.strike.wikidot'
+			2: name: 'markup.strike.wikidot'
+			3: name: 'punctuation.definition.strike.wikidot'
+		]
+inlineMonoSpacedText:
+	patterns:[
+		name: 'meta.raw.wikidot'
+		match: '({{)(.*)(}})'
+		captures:
+			1: name: 'punctuation.definition.raw.wikidot'
+			2: name: 'markup.raw.wikidot'
+			3: name: 'punctuation.definition.raw.wikidot'
+		]
+inlineHeadingLevel1:
+	patterns:[
+		name: 'markup.heading.marker.wikidot'
+		match: '^(\\+{1})(\\s+)(.*)'
+		captures:
+			1: name: 'markup.heading.marker.wikidot'
+			2: name: 'markup.heading.space.wikidot'
+			3: name: 'markup.heading.heading-1.wikidot'
+		]
+inlineHeadingLevel2:
+	patterns:[
+		name: 'markup.heading.heading-2.wikidot'
+		match: '^(\\+{2})(\\s+)(.*)'
+		captures:
+			1: name: 'markup.heading.marker.wikidot'
+			2: name: 'markup.heading.space.wikidot'
+			3: name: 'markup.heading.heading-2.wikidot'
+		]
+inlineHeadingLevel3:
+	patterns:[
+		name: 'markup.heading.heading-2.wikidot'
+		match: '^(\\+{3})(\\s+)(.*)'
+		captures:
+			1: name: 'markup.heading.marker.wikidot'
+			2: name: 'markup.heading.space.wikidot'
+			3: name: 'markup.heading.heading-2.wikidot'
+		]
+inlineHeadingLevel4:
+	patterns:[
+		name: 'markup.heading.heading-2.wikidot'
+		match: '^(\\+{4})(\\s+)(.*)'
+		captures:
+			1: name: 'markup.heading.marker.wikidot'
+			2: name: 'markup.heading.space.wikidot'
+			3: name: 'markup.heading.heading-2.wikidot'
+		]
+inlineHeadingLevel5:
+	patterns:[
+		name: 'markup.heading.heading-2.wikidot'
+		match: '^(\\+{5})(\\s+)(.*)'
+		captures:
+			1: name: 'markup.heading.marker.wikidot'
+			2: name: 'markup.heading.space.wikidot'
+			3: name: 'markup.heading.heading-2.wikidot'
+		]
+inlineHeadingLevel6:
+	patterns:[
+		name: 'markup.heading.heading-2.wikidot'
+		match: '^(\\+{6})(\\s+)(.*)'
+		captures:
+			1: name: 'markup.heading.marker.wikidot'
+			2: name: 'markup.heading.space.wikidot'
+			3: name: 'markup.heading.heading-2.wikidot'
+		]
 
 # The specific block type patterns
-commentsBlock:
-   patterns: [
-      name: 'comment.block.wikidot'
-      begin: '\\[!--'
-      captures: 0: name: 'punctuation.definition.comment.wikidot'
-      end: '--]'
-      captures: 0: name: 'punctuation.definition.comment.wikidot'
-   ]
+blockComments:
+	patterns: [
+		name: 'comment.block.wikidot'
+		begin: '\\[!--'
+		captures: 0: name: 'punctuation.definition.comment.wikidot'
+		end: '--]'
+		captures: 0: name: 'punctuation.definition.comment.wikidot'
+	]
+blockCustomElement:
+	patterns: [
+		begin: '(\\[\\[span )(style=".*")(]])'
+		captures:
+			0: name: 'entity.span.wikidot'
+			1: name: 'punctuation.definition.span.wikidot'
+			2: name: 'variable.span.color.wiki'
+			3: name: 'punctuation.definition.span.wikidot'
+		end: '\\[\\[\/span]]'
+		captures: 0: name: 'punctuation.definition.span.wikidot'
+	]
+blockColorCode:
+	patterns: [
+		begin: '(##)(.*)(\|)'
+		captures:
+			0: name: 'entity.colorCodeBlock.wikidot'
+			1: name: 'punctuation.definition.colorCode.wikidot'
+			2: name: 'variable.colorCode.color.wiki'
+			3: name: 'punctuation.definition.colorCode.wikidot'
+		end: '##'
+		captures:
+			0: name: 'punctuation.definition.colorCode.wikidot'
+	]
+blockTextSize:
+	patterns: [
+		begin: '(\\[\\[size)(.*)(]])'
+		captures:
+			0: name: 'entity.textsize.wikidot'
+			1: name: 'punctuation.definition.textsize.wikidot'
+			2: name: 'variable.textsize.size.wiki'
+			3: name: 'punctuation.definition.textsize.wikidot'
+		end: '\\[\\[\/size]]'
+		captures:
+			0: name: 'punctuation.definition.textsize.wikidot'
+	]
+blockModuleCSS:
+	begin: '\\[\\[module css]]'
+	end: '\\[\\[\\/module]]'
+	patterns: [{ include: 'source.css' }]
 
-# The repository closing bracket
+# Repository closing bracket
 }
