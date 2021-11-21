@@ -35,12 +35,18 @@ repository:{
 			{ include: '#blockTextSize'},
 			{ include: '#blockModuleCSS' },
 			{ include: '#blockCollapsible' },
+			{ include: '#blockTabView' },
+			{ include: '#blockTabs' },
+			{ include: '#blockGridCellHeaders' },
+			{ include: '#blockGridCellContents' },
 		]
 	basichightlights:
 		patterns:[
-			{ include: '#blockTableOfContents' },
-			{ include: '#blockHorizontalRule' },
-			{ include: '#blockInteralLinks' },
+			{ include: '#highlightTableOfContents' },
+			{ include: '#highlightHorizontalRule' },
+			{ include: '#highlightInteralLinks' },
+			{ include: '#highlightInclude' },
+			{ include: '#highlightInternalAnchorLink'},
 		]
 
 # The specific Inline Formating Patterns
@@ -184,7 +190,7 @@ blockColorCode:
 	]
 blockCustomElement:
 	patterns: [
-		begin: '\\[\\[span (style=)(".*")]]'
+		begin: '\\[\\[span (style=)("[^\\]]*")]]'
 		beginCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
 			1: name: 'entity.other.attribute-name.wikidot'
@@ -195,19 +201,18 @@ blockCustomElement:
 		patterns:[{ include: '$self' }]
 	]
 blockTextSize:
-	patterns: [
-		begin: '\\[\\[size(.*)]]'
+	patterns: [{
+		begin: '\\[\\[size ([^\\]]*)]]'
 		beginCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
 			1: name: 'support.constant.wikidot'
 		end: '\\[\\[/size]]'
 		endCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
-		contentName: 'entity.name.section.wikidot'
 		patterns:[{ include: '$self' }]
-	]
+	}]
 blockModuleCSS:
-	begin: '\\[\\[module\\s(.*)]]'
+	begin: '\\[\\[module\\s([^\\]]*)]]'
 	beginCaptures:
 		0: name: 'punctuation.definition.entity.tag.wikidot'
 		1: name: 'support.constant.wikidot'
@@ -218,7 +223,7 @@ blockModuleCSS:
 	patterns: [{ include: 'source.css' }]
 blockCollapsible:
 	patterns: [
-		begin: '\\[\\[collapsible(\\sshow=)(.*)(\\shide=)(.*)]]'
+		begin: '\\[\\[collapsible(\\sshow=)([^\\]]*)(\\shide=)([^\\]]*)]]'
 		beginCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
 			1: name: 'entity.other.attribute-name.wikidot'
@@ -230,23 +235,67 @@ blockCollapsible:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
 		patterns: [{ include: '$self' }]
 	]
+blockTabView:
+	patterns: [
+		begin: '\\[\\[tabview]]'
+		beginCaptures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+		end: '\\[\\[\\/tabview]]'
+		endCaptures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+		contentName: 'meta.tabview.wikidot'
+		patterns: [{ include: '$self' }]
+	]
+blockTabs:
+	patterns:[
+		begin: '\\[\\[tab ([^\\]]*)]]'
+		beginCaptures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+			1: name: 'support.constant.wikidot'
+		end: '\\[\\[\\/tab]]'
+		endCaptures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+		contentName: 'meta.tab.wikidot'
+		patterns: [{ include: '$self' }]
+	]
+blockGridCellHeaders:
+	patterns:[
+		begin: '\\|+~([^\\|]+)'
+		beginCaptures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+			1: name: 'entity.name.section.wikidot'
+		end: '\\|{2}$'
+		endCaptures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+		patterns: [{ include: '$self' }]
+	]
+blockGridCellContents:
+	patterns:[
+		begin: '\\|+'
+		beginCaptures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+		end: '\\|{2}$'
+		endCaptures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+		patterns: [{ include: '$self' }]
+	]
 
 # Basic highlighting
-blockTableOfContents:
+highlightTableOfContents:
 	patterns: [
 		match: '\\[\\[(f<|f>|)toc]]'
 		captures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
 			1: name: 'support.constant.wikidot'
 	]
-blockHorizontalRule:
+highlightHorizontalRule:
 	patterns: [
 		match: '(-{4,})'
 		captures:
 			0: name: 'entity.horizontalrule.wikidot'
 			1: name: 'markup.heading.wikidot'
 	]
-blockInteralLinks:
+highlightInteralLinks:
 	patterns: [
 		match: '\\[{3}([^#:|\\]]*)(?:#|\\||:|)([^#:|\\]]*)(?:#|\\||:|)([^#:|\\]]*)\\]{3}'
 		captures:
@@ -255,6 +304,21 @@ blockInteralLinks:
 			2: name: 'support.constant.wikidot'
 			3: name: 'support.constant.wikidot'
 	]
+highlightInclude:
+	patterns: [
+		match: '\\[\\[include ([^\\]]*)]]'
+		captures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+			1: name: 'support.constant.wikidot'
+	]
+highlightInternalAnchorLink:
+	patterns: [
+		match: '\\[\\[[\\#\\/\\>\\<\\=]+([^\\]]*)]]'
+		captures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+			1: name: 'support.constant.wikidot'
+	]
+
 
 # Repository closing bracket
 }
