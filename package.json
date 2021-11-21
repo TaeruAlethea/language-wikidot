@@ -1,7 +1,7 @@
 {
   "name": "language-wikidot",
   "version": "0.0.1",
-  "description": null,
+  "description": "A Grammer for wikidot",
   "keywords": [
     "language",
     "grammar"
