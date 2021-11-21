@@ -33,6 +33,9 @@ repository:{
 			{ include: '#blockColorCode' },
 			{ include: '#blockTextSize'},
 			{ include: '#blockModuleCSS' },
+			{ include: '#blockCollapsible' },
+			{ include: '#blockTableOfContents' },
+			{ include: '#blockHorizontalRule' },
 		]
 
 # The specific Inline Formating Patterns
@@ -170,7 +173,7 @@ blockCustomElement:
 		captures:
 			0: name: 'entity.customelement.wikidot'
 			1: name: 'punctuation.definition.element.wikidot'
-			2: name: 'variable.parameter.wiki'
+			2: name: 'constant.other.wiki'
 			3: name: 'punctuation.definition.element.wikidot'
 		end: '\\[\\[\/span]]'
 		captures: 0: name: 'punctuation.definition.span.wikidot'
@@ -181,7 +184,7 @@ blockColorCode:
 		captures:
 			0: name: 'entity.colorCode.wikidot'
 			1: name: 'punctuation.definition.colorCode.wikidot'
-			2: name: 'variable.parameter.wiki'
+			2: name: 'constant.other.wiki'
 			3: name: 'punctuation.definition.colorCode.wikidot'
 		end: '##'
 		captures:
@@ -191,9 +194,9 @@ blockTextSize:
 	patterns: [
 		begin: '(\\[\\[size)(.*)(]])'
 		captures:
-			0: name: 'entity.textsize.wikidot'
+			0: name: 'entity.name.section.wikidot'
 			1: name: 'punctuation.definition.textsize.wikidot'
-			2: name: 'variable.parameter.wiki'
+			2: name: 'constant.other.wiki'
 			3: name: 'punctuation.definition.textsize.wikidot'
 		end: '\\[\\[\/size]]'
 		captures:
@@ -202,8 +205,40 @@ blockTextSize:
 blockModuleCSS:
 	begin: '\\[\\[module css]]'
 	end: '\\[\\[\\/module]]'
-	name: 'entity.module.css.wikidot'
+	name: 'entity.name.section.wikidot'
 	patterns: [{ include: 'source.css' }]
+blockCollapsible:
+	patterns: [
+		name: 'entity.name.section.wikidot'
+		begin: '(\\[\\[collapsible)(".*")(]])'
+		captures:
+			1: name: 'punctuation.definition.collapsibleblock.wikidot'
+			2: name: 'string.quoted.double.wikidot'
+			3: name: 'punctuation.definition.collapsibleblock.wikidot'
+		end: '\\[\\[\\/collapsible]]'
+		captures:
+			0: name: 'punctuation.definition.collapsibleblock.wikidot'
+	]
+
+# Basic highlighting
+blockTableOfContents:
+	patterns: [
+		name: 'entity.toc.wikidot'
+		match: '(\\[\\[)(f<|f>|)(toc)(]])'
+		captures:
+			1: name: 'punctuation.definition.block.wikidot'
+			2: name: 'markup.bold.wikidot'
+			3: name: 'markup.bold.wikidot'
+			4: name: 'punctuation.definition.block.wikidot'
+	]
+blockHorizontalRule:
+	patterns: [
+		name: 'entity.horizontalrule.wikidot'
+		match: '(-{4,})'
+		captures:
+			1: name: 'markup.heading.wikidot'
+	]
+
 
 # Repository closing bracket
 }
