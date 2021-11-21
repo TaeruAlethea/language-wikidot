@@ -71,9 +71,26 @@
 	'color code block':
 		prefix: 'color'
 		body: '##$1| $2 ##$0'
-	'Text size block':
+	'text size block':
 		prefix: 'size'
 		body: '[[size $1]] $2 [[/size]]$0'
-	'Custom module block':
+	'custom module block':
 		prefix: 'module'
 		body: '[[module $1]] $2 [[/module]]$0'
+	'collapsible block':
+		prefix: 'collapsible'
+		body: '[[collapsible show="$1" hide="$2"]] $3 [[/collapsible]]$0'
+
+	# Basic highliting blocks
+	'table of contents module block':
+		prefix: 'toc'
+		body: '[[toc]]$0'
+	'left anchored table of contents module block':
+		prefix: 'tocl'
+		body: '[[f<toc]]$0'
+	'right anchored table of contents module block':
+		prefix: 'tocr'
+		body: '[[f>toc]]$0'
+	'horizontal rule':
+		prefix: 'hori'
+		body: '----'
