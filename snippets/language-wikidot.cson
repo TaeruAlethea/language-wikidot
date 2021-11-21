@@ -82,15 +82,18 @@
 		body: '[[collapsible show="$1" hide="$2"]] $3 [[/collapsible]]$0'
 
 	# Basic highliting blocks
-	'table of contents module block':
+	'table of contents module tag':
 		prefix: 'toc'
 		body: '[[toc]]$0'
-	'left anchored table of contents module block':
+	'left anchored table of contents module tag':
 		prefix: 'tocl'
 		body: '[[f<toc]]$0'
-	'right anchored table of contents module block':
+	'right anchored table of contents module tag':
 		prefix: 'tocr'
 		body: '[[f>toc]]$0'
 	'horizontal rule':
 		prefix: 'hori'
 		body: '----'
+	'include tag':
+		prefix: 'include'
+		body: '[[include $1]]$0'
