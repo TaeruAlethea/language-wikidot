@@ -40,6 +40,7 @@ repository:{
 		patterns:[
 			{ include: '#blockTableOfContents' },
 			{ include: '#blockHorizontalRule' },
+			{ include: '#blockInteralLinks' },
 		]
 
 # The specific Inline Formating Patterns
@@ -245,7 +246,15 @@ blockHorizontalRule:
 			0: name: 'entity.horizontalrule.wikidot'
 			1: name: 'markup.heading.wikidot'
 	]
-
+blockInteralLinks:
+	patterns: [
+		match: '\\[{3}([^#:|\\]]*)(?:#|\\||:|)([^#:|\\]]*)(?:#|\\||:|)([^#:|\\]]*)\\]{3}'
+		captures:
+			0: name: 'punctuation.definition.entity.tag.wikidot'
+			1: name: 'support.constant.wikidot'
+			2: name: 'support.constant.wikidot'
+			3: name: 'support.constant.wikidot'
+	]
 
 # Repository closing bracket
 }
