@@ -12,41 +12,39 @@ Text,,subscript,,
 ++++ Heading Level 4
 +++++ Heading Level 5
 ++++++ Heading Level 6
++* Hidden Heading Level 1
+++* Hidden Heading Level 2
++++* Hidden Heading Level 3
+++++* Hidden Heading Level 4
++++++* Hidden Heading Level 5
+++++++* Hidden Heading Level 6
 
 + **Block Formating**
 	++ Comment Block
+		[!-- Inline comment --]
+		breaker text
 		[!--
 			Test Comment Text
 		--]
 
 	++ ColorCode Block
+		##blue|predefined##
 		##blue|
 			predefined
 		##
 
 	++ Span Block
-		[[span style="color:red"]]
-			custom //span// element
-		[[/span]]
+		[[span style="color:red"]] custom //span// element [[/span]]
 
 	++ Relative Text Size Block
+		[[size smaller]] smaller text [[/size]]
+
 		[[size smaller]]
 			smaller text
 		[[/size]]
 
-		[[size larger]]
-			larger Text
-		[[/size]]
-
-		[[size 80%]]
-			80% of current size
-		[[/size]]
-
-		[[size 18.75px]]
-			text size 18.75 pixels
-		[[/size]]
-
 	++ module CSS Block
+		[[module CSS]] #page-title { display: none; } [[/module]]
 		[[module css]]
 			#page-title {
 			  display: none;
@@ -54,9 +52,32 @@ Text,,subscript,,
 		[[/module]]
 
 	++ Collapsible Block
+		[[collapsible show="Show Text" hide="Hide Text"]] Test text [[/collapsible]]
 		[[collapsible show="Show Text" hide="Hide Text"]]
 		Test text
 		[[/collapsible]]
+
+	++ Tabview Block
+		[[tabview]] Tab Text [[/tabview]]
+		[[tabview]]
+			Tab Text
+		[[/tabview]]
+
+	++ Tab Block
+		[[tab Tab Name]] Tab Text [[/tab]]
+		[[tab Tab Name]]
+			Tab Text
+		[[/tab]]
+
+	++ tabview and tab block together
+		[[tabview]]
+			[[tab Tab Name]]
+				Tab Text
+			[[/tab]]
+			[[tab Tab Name]]
+				Tab Text
+			[[/tab]]
+		[[/tabview]]
 
 
 + **Basic Highlights**
@@ -64,8 +85,10 @@ Text,,subscript,,
 		[[toc]]
 		[[f<toc]]
 		[[f>toc]]
+
 	++ Horizontal Rule
 		----
+
 	++ Internal Links
 		[[[link-to-a-page]]]
 		[[[link "TO" a; pagE]]]
@@ -76,3 +99,6 @@ Text,,subscript,,
 		[[[doc#toc1|Section 1]]]
 		[[[doc#toc1]]]
 		[[[/| Home]]]
+
+	++ Include tags
+		[[include include test text]]
