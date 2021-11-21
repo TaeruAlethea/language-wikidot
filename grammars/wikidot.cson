@@ -102,7 +102,7 @@ inlineSubScriptText:
 inlineHeadingLevel1:
 	patterns:[
 		name: 'entity.name.section.wikidot'
-		match: '^(\\+{1})(\\s+)(.*)'
+		match: '^(\\+{1}|\\+{1}\\*)(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
@@ -111,7 +111,7 @@ inlineHeadingLevel1:
 inlineHeadingLevel2:
 	patterns:[
 		name: 'entity.name.section.wikidot'
-		match: '^(\\+{2})(\\s+)(.*)'
+		match: '^(\\+{2}|\\+{2}\\*)(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
@@ -120,7 +120,7 @@ inlineHeadingLevel2:
 inlineHeadingLevel3:
 	patterns:[
 		name: 'entity.name.section.wikidot'
-		match: '^(\\+{3})(\\s+)(.*)'
+		match: '^(\\+{3}|\\+{3}\\*)(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
@@ -129,7 +129,7 @@ inlineHeadingLevel3:
 inlineHeadingLevel4:
 	patterns:[
 		name: 'entity.name.section.wikidot'
-		match: '^(\\+{4})(\\s+)(.*)'
+		match: '^(\\+{4}|\\+{4}\\*)(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
@@ -138,7 +138,7 @@ inlineHeadingLevel4:
 inlineHeadingLevel5:
 	patterns:[
 		name: 'entity.name.section.wikidot'
-		match: '^(\\+{5})(\\s+)(.*)'
+		match: '^(\\+{5}|\\+{5}\\*)(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
@@ -147,7 +147,7 @@ inlineHeadingLevel5:
 inlineHeadingLevel6:
 	patterns:[
 		name: 'entity.name.section.wikidot'
-		match: '^(\\+{6})(\\s+)(.*)'
+		match: '^(\\+{6}|\\+{6}\\*)(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
@@ -170,7 +170,7 @@ blockCustomElement:
 		captures:
 			0: name: 'entity.customelement.wikidot'
 			1: name: 'punctuation.definition.element.wikidot'
-			2: name: 'variable.element.color.wiki'
+			2: name: 'variable.parameter.wiki'
 			3: name: 'punctuation.definition.element.wikidot'
 		end: '\\[\\[\/span]]'
 		captures: 0: name: 'punctuation.definition.span.wikidot'
@@ -181,7 +181,7 @@ blockColorCode:
 		captures:
 			0: name: 'entity.colorCode.wikidot'
 			1: name: 'punctuation.definition.colorCode.wikidot'
-			2: name: 'variable.colorCode.color.wiki'
+			2: name: 'variable.parameter.wiki'
 			3: name: 'punctuation.definition.colorCode.wikidot'
 		end: '##'
 		captures:
@@ -193,7 +193,7 @@ blockTextSize:
 		captures:
 			0: name: 'entity.textsize.wikidot'
 			1: name: 'punctuation.definition.textsize.wikidot'
-			2: name: 'variable.textsize.size.wiki'
+			2: name: 'variable.parameter.wiki'
 			3: name: 'punctuation.definition.textsize.wikidot'
 		end: '\\[\\[\/size]]'
 		captures:
