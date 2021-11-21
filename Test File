@@ -66,3 +66,13 @@ Text,,subscript,,
 		[[f>toc]]
 	++ Horizontal Rule
 		----
+	++ Internal Links
+		[[[link-to-a-page]]]
+		[[[link "TO" a; pagE]]]
+		[[[category: sample page]]]
+		[[[some page| custom text]]]
+		[[[doc|Documentation]]]
+		[[[some page|]]]
+		[[[doc#toc1|Section 1]]]
+		[[[doc#toc1]]]
+		[[[/| Home]]]
