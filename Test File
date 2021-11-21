@@ -4,6 +4,8 @@
 __Underline Text__
 --Strikethrough Text--
 {{Monospaced / Raw Text}}
+Text^^superscript^^
+Text,,subscript,,
 + Heading Level 1
 ++ Heading Level 2
 +++ Heading Level 3
