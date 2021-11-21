@@ -17,13 +17,14 @@ repository:{
 			{ include: '#inlineUnderlineText' },
 			{ include: '#inlineStrikethroughText' },
 			{ include: '#inlineMonoSpacedText' },
+			{ include: '#inlineSuperScriptText' },
+			{ include: '#inlineSubScriptText' },
 			{ include: '#inlineHeadingLevel1' },
 			{ include: '#inlineHeadingLevel2' },
 			{ include: '#inlineHeadingLevel3' },
 			{ include: '#inlineHeadingLevel4' },
 			{ include: '#inlineHeadingLevel5' },
 			{ include: '#inlineHeadingLevel6' },
-
 		]
 	blocks:
 		patterns: [
@@ -80,59 +81,77 @@ inlineMonoSpacedText:
 			2: name: 'markup.raw.wikidot'
 			3: name: 'punctuation.definition.raw.wikidot'
 		]
+inlineSuperScriptText:
+	patterns:[
+		name: 'meta.superscript.wikidot'
+		match: '(\\^\\^)(.*)(\\^\\^)'
+		captures:
+			1: name: 'punctuation.definition.superscript.wikidot'
+			2: name: 'string.unquoted.wikidot'
+			3: name: 'punctuation.definition.superscript.wikidot'
+		]
+inlineSubScriptText:
+	patterns:[
+		name: 'meta.subscript.wikidot'
+		match: '(,,)(.*)(,,)'
+		captures:
+			1: name: 'punctuation.definition.subscript.wikidot'
+			2: name: 'string.unquoted.wikidot'
+			3: name: 'punctuation.definition.subscript.wikidot'
+		]
 inlineHeadingLevel1:
 	patterns:[
-		name: 'markup.heading.marker.wikidot'
+		name: 'entity.name.section.wikidot'
 		match: '^(\\+{1})(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
-			3: name: 'markup.heading.heading-1.wikidot'
+			3: name: 'markup.heading.heading.1.wikidot'
 		]
 inlineHeadingLevel2:
 	patterns:[
-		name: 'markup.heading.heading-2.wikidot'
+		name: 'entity.name.section.wikidot'
 		match: '^(\\+{2})(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
-			3: name: 'markup.heading.heading-2.wikidot'
+			3: name: 'markup.heading.heading.2.wikidot'
 		]
 inlineHeadingLevel3:
 	patterns:[
-		name: 'markup.heading.heading-2.wikidot'
+		name: 'entity.name.section.wikidot'
 		match: '^(\\+{3})(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
-			3: name: 'markup.heading.heading-2.wikidot'
+			3: name: 'markup.heading.heading.3.wikidot'
 		]
 inlineHeadingLevel4:
 	patterns:[
-		name: 'markup.heading.heading-2.wikidot'
+		name: 'entity.name.section.wikidot'
 		match: '^(\\+{4})(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
-			3: name: 'markup.heading.heading-2.wikidot'
+			3: name: 'markup.heading.heading.4.wikidot'
 		]
 inlineHeadingLevel5:
 	patterns:[
-		name: 'markup.heading.heading-2.wikidot'
+		name: 'entity.name.section.wikidot'
 		match: '^(\\+{5})(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
-			3: name: 'markup.heading.heading-2.wikidot'
+			3: name: 'markup.heading.heading.5.wikidot'
 		]
 inlineHeadingLevel6:
 	patterns:[
-		name: 'markup.heading.heading-2.wikidot'
+		name: 'entity.name.section.wikidot'
 		match: '^(\\+{6})(\\s+)(.*)'
 		captures:
 			1: name: 'markup.heading.marker.wikidot'
 			2: name: 'markup.heading.space.wikidot'
-			3: name: 'markup.heading.heading-2.wikidot'
+			3: name: 'markup.heading.heading.6.wikidot'
 		]
 
 # The specific block type patterns
@@ -140,7 +159,8 @@ blockComments:
 	patterns: [
 		name: 'comment.block.wikidot'
 		begin: '\\[!--'
-		captures: 0: name: 'punctuation.definition.comment.wikidot'
+		captures:
+			1: name: 'punctuation.definition.comment.wikidot'
 		end: '--]'
 		captures: 0: name: 'punctuation.definition.comment.wikidot'
 	]
@@ -148,10 +168,10 @@ blockCustomElement:
 	patterns: [
 		begin: '(\\[\\[span )(style=".*")(]])'
 		captures:
-			0: name: 'entity.span.wikidot'
-			1: name: 'punctuation.definition.span.wikidot'
-			2: name: 'variable.span.color.wiki'
-			3: name: 'punctuation.definition.span.wikidot'
+			0: name: 'entity.customelement.wikidot'
+			1: name: 'punctuation.definition.element.wikidot'
+			2: name: 'variable.element.color.wiki'
+			3: name: 'punctuation.definition.element.wikidot'
 		end: '\\[\\[\/span]]'
 		captures: 0: name: 'punctuation.definition.span.wikidot'
 	]
@@ -159,7 +179,7 @@ blockColorCode:
 	patterns: [
 		begin: '(##)(.*)(\|)'
 		captures:
-			0: name: 'entity.colorCodeBlock.wikidot'
+			0: name: 'entity.colorCode.wikidot'
 			1: name: 'punctuation.definition.colorCode.wikidot'
 			2: name: 'variable.colorCode.color.wiki'
 			3: name: 'punctuation.definition.colorCode.wikidot'
@@ -182,6 +202,7 @@ blockTextSize:
 blockModuleCSS:
 	begin: '\\[\\[module css]]'
 	end: '\\[\\[\\/module]]'
+	name: 'entity.module.css.wikidot'
 	patterns: [{ include: 'source.css' }]
 
 # Repository closing bracket
