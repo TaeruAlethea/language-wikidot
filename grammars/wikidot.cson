@@ -313,7 +313,7 @@ highlightInclude:
 	]
 highlightInternalAnchorLink:
 	patterns: [
-		match: '\\[\\[[\\#\\/\\>\\<\\=]+([^\\]]*)]]'
+		match: '\\[\\[[\\#\\/\\>\\<\\=\\*]+([^\\]]*)]]'
 		captures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
 			1: name: 'support.constant.wikidot'
