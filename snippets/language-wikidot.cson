@@ -42,6 +42,24 @@
 	'heading level 6':
 		prefix: 'h6'
 		body: '++++++ $0'
+	'hidden heading level 1':
+		prefix: 'h1*'
+		body: '+* $0'
+	'hidden heading level 2':
+		prefix: 'h2*'
+		body: '++* $0'
+	'hidden heading level 3':
+		prefix: 'h3*'
+		body: '+++* $0'
+	'hidden heading level 4':
+		prefix: 'h4*'
+		body: '++++* $0'
+	'hidden heading level 5':
+		prefix: 'h5*'
+		body: '+++++* $0'
+	'hidden heading level 6':
+		prefix: 'h6*'
+		body: '++++++* $0'
 
 	#Block snippets
 	'invisible comment block':
