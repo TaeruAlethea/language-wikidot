@@ -14,22 +14,19 @@ Text,,subscript,,
 ++++++ Heading Level 6
 
 + **Block Formating**
-Comment Block
+	Comment Block
 		[!--
 			Test Comment Text
 		--]
-
-Span Block
+	Span Block
 		[[span style="color:red"]]
 			custom //span// element
 		[[/span]]
-
-ColorCode Block
+	ColorCode Block
 		##blue|
 			predefined
 		##
-
-Relative Text Size Block
+	Relative Text Size Block
 		[[size smaller]]
 			smaller text
 		[[/size]]
@@ -45,10 +42,21 @@ Relative Text Size Block
 		[[size 18.75px]]
 			text size 18.75 pixels
 		[[/size]]
-
-CSS Code Block
+	module CSS Block
 		[[module css]]
 		#page-title {
 		  display: none;
 		}
 		[[/module]]
+	Collapsible Block
+		[[collapsible show="Show Text" hide="Hide Text"]]
+		Test text
+		[[/collapsible]]
+
++ **Basic Highlights**
+	Table of Contents
+		[[toc]]
+		[[f<toc]]
+		[[f>toc]]
+	Horizontal Rule
+		----
