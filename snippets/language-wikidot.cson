@@ -2,6 +2,60 @@
 # https://github.com/atom/language-javascript/blob/master/snippets/javascript.cson
 
 '.source.wikidot':
-  'Method documentation':
-    'prefix': 'doc'
-    'body': '@@ ${1:method} - ${2:description}'
+	#Inline Formatting snippets
+	'italics text':
+		prefix: 'i'
+		body: '//$1//$0'
+	'bold text':
+		prefix: 'b'
+		body: '**$1**$0'
+	'underline text':
+		prefix: 'u'
+		body: '__$1__$0'
+	'strikethrough text':
+		prefix: 's'
+		body: '--$1--$0'
+	'monospaced text':
+		prefix: 'm'
+		body: '{{$1}}$0'
+	'superscript text':
+		prefix: 'sup'
+		body: '^^$1^^$0'
+	'subscript text':
+		prefix: 'sub'
+		body: ',,$1,,$0'
+	'heading level 1':
+		prefix: 'h1'
+		body: '+ $0'
+	'heading level 2':
+		prefix: 'h2'
+		body: '++ $0'
+	'heading level 3':
+		prefix: 'h3'
+		body: '+++ $0'
+	'heading level 4':
+		prefix: 'h4'
+		body: '++++ $0'
+	'heading level 5':
+		prefix: 'h5'
+		body: '+++++ $0'
+	'heading level 6':
+		prefix: 'h6'
+		body: '++++++ $0'
+
+	#Block snippets
+	'invisible comment block':
+		prefix: '!'
+		body: '[!-- $1 --]$0'
+	'custom element block':
+		prefix: 'span'
+		body: '[[span style="$1"]] $2 [[/span]]$0'
+	'color code block':
+		prefix: 'color'
+		body: '##$1| $2 ##$0'
+	'Text size block':
+		prefix: 'size'
+		body: '[[size $1]] $2 [[/size]]$0'
+	'Custom module block':
+		prefix: 'module'
+		body: '[[module $1]] $2 [[/module]]$0'
