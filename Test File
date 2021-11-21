@@ -1,0 +1,52 @@
++ **Inline Formating**
+//Italic Text//
+**Bold Text**
+__Underline Text__
+--Strikethrough Text--
+{{Monospaced / Raw Text}}
++ Heading Level 1
+++ Heading Level 2
++++ Heading Level 3
+++++ Heading Level 4
++++++ Heading Level 5
+++++++ Heading Level 6
+
++ **Block Formating**
+Comment Block
+		[!--
+			Test Comment Text
+		--]
+
+Span Block
+		[[span style="color:red"]]
+			custom //span// element
+		[[/span]]
+
+ColorCode Block
+		##blue|
+			predefined
+		##
+
+Relative Text Size Block
+		[[size smaller]]
+			smaller text
+		[[/size]]
+
+		[[size larger]]
+			larger Text
+		[[/size]]
+
+		[[size 80%]]
+			80% of current size
+		[[/size]]
+
+		[[size 18.75px]]
+			text size 18.75 pixels
+		[[/size]]
+
+CSS Code Block
+		[[module css]]
+		#page-title {
+		  display: none;
+		}
+		[[/module]]
