@@ -80,6 +80,12 @@
 	'collapsible block':
 		prefix: 'collapsible'
 		body: '[[collapsible show="$1" hide="$2"]] $3 [[/collapsible]]$0'
+	'tabview setup block':
+		prefix: 'tabview'
+		body: '[[tabview]] $1[[/tabview]]$0'
+	'tab block':
+		prefix: 'tab'
+		body: '[[tab $1]] $2[[/tab]]$0'
 
 	# Basic highliting blocks
 	'table of contents module tag':
