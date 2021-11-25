@@ -1,11 +1,11 @@
 + **Inline Formating**
-//Italic Text//
-**Bold Text**
-__Underline Text__
---Strikethrough Text--
-{{Monospaced / Raw Text}}
-Text^^superscript^^
-Text,,subscript,,
+//Italic Text// Same Line Seperation Text //Italic Text//
+**Bold Text** Same Line Seperation Text **Bold Text**
+__Underline Text__ Same Line Seperation Text __Underline Text__
+--Strikethrough Text-- Same Line Seperation Text --Strikethrough Text--
+{{Monospaced / Raw Text}} Same Line Seperation Text {{Monospaced / Raw Text}}
+Text^^superscript^^ Same Line Seperation Text Text^^superscript^^
+Text,,subscript,, Same Line Seperation Text Text,,subscript,,
 + Heading Level 1
 ++ Heading Level 2
 +++ Heading Level 3

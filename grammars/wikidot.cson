@@ -53,60 +53,72 @@ repository:{
 inlineItalicText:
 	patterns:[
 		name: 'markup.italic.wikidot'
-		match: '(\\/\\/).*(\\/\\/)'
-		captures:
-			1: name: 'punctuation.definition.italic.wikidot'
-			2: name: 'punctuation.definition.italic.wikidot'
+		begin: '\\/\\/'
+		beginCaptures:
+			0: name: 'punctuation.definition.italic.wikidot'
+		end: '\\/\\/'
+		endCaptures:
+			0: name: 'punctuation.definition.italic.wikidot'
 		]
 inlineBoldText:
 	patterns:[
 		name: 'markup.bold.wikidot'
-		match: '(\\*\\*).*(\\*\\*)'
-		captures:
-			1: name: 'punctuation.definition.bold.wikidot'
-			2: name: 'punctuation.definition.bold.wikidot'
+		begin: '\\*\\*'
+		beginCaptures:
+			0: name: 'punctuation.definition.bold.wikidot'
+		end: '\\*\\*'
+		endCaptures:
+			0: name: 'punctuation.definition.bold.wikidot'
 		]
 inlineUnderlineText:
 	patterns:[
 		name: 'markup.underline.wikidot'
-		match: '(__).*(__)'
-		captures:
-			1: name: 'punctuation.definition.underline.wikidot'
-			2: name: 'punctuation.definition.underline.wikidot'
+		begin: '__'
+		beginCaptures:
+			0: name: 'punctuation.definition.underline.wikidot'
+		end: '__'
+		endCaptures:
+			0: name: 'punctuation.definition.underline.wikidot'
 		]
 inlineStrikethroughText:
 	patterns:[
 		name: 'markup.strike.wikidot'
-		match: '(--).*(--)'
-		captures:
-			1: name: 'punctuation.definition.strike.wikidot'
-			2: name: 'punctuation.definition.strike.wikidot'
+		begin: '--'
+		beginCaptures:
+			0: name: 'punctuation.definition.strike.wikidot'
+		end: '--'
+		endCaptures:
+			0: name: 'punctuation.definition.strike.wikidot'
 		]
 inlineMonoSpacedText:
 	patterns:[
 		name: 'markup.raw.wikidot'
-		match: '({{).*(}})'
-		captures:
-			1: name: 'punctuation.definition.raw.wikidot'
-			2: name: 'punctuation.definition.raw.wikidot'
+		begin: '{{'
+		beginCaptures:
+			0: name: 'punctuation.definition.raw.wikidot'
+		end: '}}'
+		endCaptures:
+			0: name: 'punctuation.definition.raw.wikidot'
 		]
 inlineSuperScriptText:
 	patterns:[
-		name: 'meta.superscript.wikidot'
-		match: '(\\^\\^)(.*)(\\^\\^)'
-		captures:
-			1: name: 'punctuation.definition.superscript.wikidot'
-			2: name: 'string.unquoted.wikidot'
-			3: name: 'punctuation.definition.superscript.wikidot'
+		name: 'string.unquoted.wikidot'
+		begin: '\\^\\^'
+		beginCaptures:
+			0: name: 'punctuation.definition.superscript.wikidot'
+		end: '\\^\\^'
+		endCaptures:
+			0: name: 'punctuation.definition.superscript.wikidot'
 		]
 inlineSubScriptText:
 	patterns:[
-		name: 'meta.subscript.wikidot'
-		match: '(,,)(.*)(,,)'
-		captures:
-			1: name: 'punctuation.definition.subscript.wikidot'
-			2: name: 'string.unquoted.wikidot'
-			3: name: 'punctuation.definition.subscript.wikidot'
+		name: 'string.unquoted.wikidot'
+		begin: ',,'
+		beginCaptures:
+			0: name: 'punctuation.definition.subscript.wikidot'
+		end: ',,'
+		endCaptures:
+			0: name: 'punctuation.definition.subscript.wikidot'
 		]
 inlineHeadingLevel1:
 	patterns:[
@@ -166,18 +178,18 @@ inlineHeadingLevel6:
 # The specific block type patterns
 blockComments:
 	patterns: [
-		name: 'meta.comment.wikidot'
+		name: 'comment.block.wikidot'
 		begin: '\\[!--'
 		beginCaptures:
-			1: name: 'punctuation.definition.comment.block.wikidot'
+			0: name: 'punctuation.definition.comment.block.wikidot'
 		end: '--]'
 		endCaptures:
 			0: name: 'punctuation.definition.comment.block.wikidot'
-		conentName: 'comment.block.wikidot'
 		patterns:[{ include: '$self' }]
 	]
 blockColorCode:
 	patterns: [
+		name: 'entity.name.section.wikidot'
 		begin: '##(.*)\\|'
 		beginCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
@@ -185,7 +197,6 @@ blockColorCode:
 		end: '##'
 		endCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
-		contentName: 'entity.name.section.wikidot'
 		patterns:[{ include: '$self' }]
 	]
 blockCustomElement:
@@ -201,7 +212,7 @@ blockCustomElement:
 		patterns:[{ include: '$self' }]
 	]
 blockTextSize:
-	patterns: [{
+	patterns: [
 		begin: '\\[\\[size ([^\\]]*)]]'
 		beginCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
@@ -210,7 +221,7 @@ blockTextSize:
 		endCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
 		patterns:[{ include: '$self' }]
-	}]
+	]
 blockModuleCSS:
 	begin: '\\[\\[module\\s([^\\]]*)]]'
 	beginCaptures:
@@ -237,17 +248,18 @@ blockCollapsible:
 	]
 blockTabView:
 	patterns: [
+		name: 'meta.tabview.wikidot'
 		begin: '\\[\\[tabview]]'
 		beginCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
 		end: '\\[\\[\\/tabview]]'
 		endCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
-		contentName: 'meta.tabview.wikidot'
 		patterns: [{ include: '$self' }]
 	]
 blockTabs:
 	patterns:[
+		name: 'meta.tab.wikidot'
 		begin: '\\[\\[tab ([^\\]]*)]]'
 		beginCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
@@ -255,7 +267,6 @@ blockTabs:
 		end: '\\[\\[\\/tab]]'
 		endCaptures:
 			0: name: 'punctuation.definition.entity.tag.wikidot'
-		contentName: 'meta.tab.wikidot'
 		patterns: [{ include: '$self' }]
 	]
 blockGridCellHeaders:
